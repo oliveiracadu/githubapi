@@ -19,7 +19,8 @@ Configuração de ambiente:
     - Arquivo para Cópia .env.copy
     - Gerar uma KEY para sua aplicação `php artisan key:generate`
 
-Execução do Projeto
+Execução do Projeto:
+----------
 
 - `php artisan serve`
 - `npm run watch`
