@@ -2,10 +2,12 @@
 
 namespace App\Helpers;
 
+use GuzzleHttp\Client as Client;
+
 class GitHubConnection {
 
     public function __construct() {
-        $this->client = new \GuzzleHttp\Client();
+        $this->client = new Client();
         $this->github = config('constants.GITHUB');
     }
     
