@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use GuzzleHttp\Client as Client;
+use GuzzleHttp\Psr7\Response as Response;
 
 class GitHubConnection {
 
@@ -11,11 +12,14 @@ class GitHubConnection {
         $this->github = config('constants.GITHUB');
     }
     
-    public function request($method, $endpoint, $data) {
+    public function request($method, $endpoint, $data, $search = NULL) : Response {
         $url = $this->github['API_URL'] . '/' . $endpoint;
 
-        if (!is_null($data))
-            $url .= '?q=' . str_replace(' ', '', $data);
+        if (!empty($data))
+            $url .= '?' . http_build_query($data);
+
+        if (!is_null($search))
+            $url .= '&q=' . str_replace(' ', '', $search);
 
         switch ($method) {
             case 'GET':

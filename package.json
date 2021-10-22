@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "5.15.3",
+        "react-debounce-input": "^3.2.5",
         "react-helmet": "^6.1.0",
         "react-loading": "^2.0.3",
         "reactstrap": "^8.10.0"

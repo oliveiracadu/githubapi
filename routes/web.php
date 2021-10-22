@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Web\ListController;
+use App\Http\Controllers\Web\ReposController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ListController::class, 'list'])->name('list');
+Route::get('/', [ReposController::class, 'repos'])->name('repos');
+Route::get('/owner/{ownerName}', [ReposController::class, 'owner'])->name('owner');

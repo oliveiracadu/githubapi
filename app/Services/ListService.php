@@ -2,8 +2,7 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Request;
-use App\Helpers\GitHubConnection;
+use App\Helpers\GitHubConnection as GitHubConnection;
 
 class ListService {
 
@@ -13,22 +12,22 @@ class ListService {
         $this->github = $github;
     }
     
-    public function listRepos($search) {
+    public function listRepos($search, $data) : Array {
         $endpoint = 'search/repositories';
-        $response = $this->github->request('GET', $endpoint, $search);
+        $response = $this->github->request('GET', $endpoint, $data, $search);
 
         $body = json_decode($response->getBody(), true);
         $status = $response->getStatusCode();
 
         return [
             'status' => $status,
-            'data'   => $body['items']
+            'data'   => $body
         ];
     }
 
-    public function listReposUser($ownerName) {
+    public function listReposUser($ownerName, $data) : Array {
         $endpoint = 'users/' . $ownerName . '/repos';
-        $response = $this->github->request('GET', $endpoint, NULL);
+        $response = $this->github->request('GET', $endpoint, $data);
 
         $body = json_decode($response->getBody(), true);
         $status = $response->getStatusCode();

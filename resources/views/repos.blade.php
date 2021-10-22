@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-    <div id="list"></div>
+    <div id="repos"></div>
 @endsection
